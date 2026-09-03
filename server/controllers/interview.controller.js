@@ -307,7 +307,7 @@ Answer: ${answer}
 
     await interview.save();
 
-    return res.status(200).json({ feeback: parsed.feeback });
+    return res.status(200).json({ feedback: parsed.feedback });
   } catch (error) {
     return res
       .status(500)
