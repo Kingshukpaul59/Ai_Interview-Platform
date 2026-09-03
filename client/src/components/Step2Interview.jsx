@@ -247,28 +247,30 @@ function Step2Interview({ interviewData, onFinish }) {
   };
 
  const handleNext = async () => {
-  console.log("NEXT BUTTON CLICKED");
+  console.log("========== NEXT CLICKED ==========");
   console.log("Current Index:", currentIndex);
   console.log("Total Questions:", questions.length);
+  console.log("Current Question:", currentQuestion);
 
   setAnswer("");
   setFeedback("");
 
   if (currentIndex + 1 >= questions.length) {
-    console.log("Last question reached");
+    console.log("LAST QUESTION");
     finishInterview();
     return;
   }
 
-  // Move to the next question immediately
+  console.log("Moving to question:", currentIndex + 1);
+
   setCurrentIndex((prev) => prev + 1);
 
-  // Speak after changing the question
   setTimeout(() => {
-    speakText("Alright, let's move to the next question.");
-  }, 300);
+    if (isMicOn) {
+      startMic();
+    }
+  }, 500);
 };
-
   const finishInterview = async () => {
     stopMic();
     setIsMicOn(false);
